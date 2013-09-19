@@ -45,7 +45,7 @@
                                     $owner_image = \Idno\Core\site()->config()->url . 'gfx/users/default.png';
                             }
                             
-                            $object->addAnnotation('reply', $name, $url, $owner_image, $comment);
+                            $object->addAnnotation('reply', $name, $url, $owner_image, $comment, $object->getUrl());
                             if ($object->save())
                                 \Idno\Core\site()->session()->addMessage('Comment successfully made...');
                             
