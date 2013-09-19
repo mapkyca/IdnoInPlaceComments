@@ -7,9 +7,9 @@
         $email = $user->email;
     }
 
-    
+    if (\Idno\Core\site()->currentPage()->isPermalink()) {
 ?>
-<form action="<?= \Idno\Core\site()->config()->url; ?>comments/edit" method="post">
+<form action="<?= \Idno\Core\site()->config()->url; ?>comment/edit" method="post">
     <div class="comments-form">
 
         <?php if (empty($user)) { ?>
@@ -23,6 +23,12 @@
             <label>
                 Email address (will not be shown):<br />
                 <input type="email" name="email" id="email" value="<?=htmlspecialchars($email)?>" class="span8" />
+            </label>
+        </p>
+        <p>
+            <label>
+                Website:<br />
+                <input type="url" name="url" id="url" value="<?=htmlspecialchars($url)?>" class="span8" />
             </label>
         </p>
         <?php } ?>
@@ -41,9 +47,10 @@
             <?php
             }?>
             
-            <?= \Idno\Core\site()->actions()->signForm('/comments/edit') ?>
-            <input type="submit" class="btn btn-primary" value="Save" />
+            <?= \Idno\Core\site()->actions()->signForm('/comment/edit') ?>
+            <input type="submit" class="btn btn-primary" value="Comment" />
         </p>
         
     </div>
 </form>
+    <?php } ?>
